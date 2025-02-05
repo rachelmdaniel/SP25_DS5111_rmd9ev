@@ -15,10 +15,10 @@ After connecting to the VM, run the following within the command line to update 
 * Click on "New SSH key" on the top right of the screen.
 * Name the SSH key so that it matches your VM, for example, mine is called 25SP_rachel_rmd9ev.
 * To view the SSH key, go back to your VM, and cat the contents of the pub side of the key:
-    - cat id_ed25519.pub
+    - `cat id_ed25519.pub`
 * Paste the contents to the SSH key field and click "Add SSH key" below the Key field.
 * Test that the SSH was successfully created using the following line:
-    - ssh -T -i ed25519 gitgithub.com
+    - `ssh -T -i ed25519 gitgithub.com`
     - You should see a message similar to this with your github username:
         - Hi rachelmdaniel! You've successfully authenticated, but GitHub does not provide shell access. 
 
@@ -26,32 +26,33 @@ After connecting to the VM, run the following within the command line to update 
 * Execute the commands within the setup_git_global_creds shell file to set your global git credentials. Be sure to replace the USER and NAME with your email and git username
 
 
-### Now that your github is connected to your VM, clone my repository to access scripts:
-* git clone git@github.com:rachelmdaniel/SP25_DS5111_rmd9ev.git
+### Now that your github is connected to your VM, clone my repository to access scripts using the following line:
+* `git clone git@github.com:rachelmdaniel/SP25_DS5111_rmd9ev.git`
 
 * Checks:
-    - use the ls command to make sure the repo was cloned
-    - Run git config --global --list to make sure that your username and email are connected
+    - use the `ls` command to make sure the repo was cloned
+    - Run `git config --global --list` to make sure that your username and email are connected
 
 ### Execute the init.sh script to finish setting up the VM:
-* ./init.sh
+* `./init.sh`
 
 ### Add tools and functionality for pipeline:
 * Install Chrome headless browser within your VM using the code found within the install_chrome_headless.sh script. Check that it’s working correctly using example.com, using the script provided at the bottom of the shell file.
 * A makefile and requirement.txt file can be found within this repository. It will be used to set up automation.
-	- Enter “make” within the command line will give you an overview of the file
-	- Enter “make update” to update the dependencies using the requirement.txt file (only need pandas and lxml for now).
+	- Enter `make` within the command line will give you an overview of the file
+	- Enter `make update` to update the dependencies using the requirement.txt file (only need pandas and lxml for now).
 
 ### Testing Chrome headless browser:
 * Enter your environment by entering the following on the command line (there should be a space in between the period and the e):
 	- `. env/bin/activate`
 * To test the headless browser, run one (or both) of the following lines:
-	- make ygainers.csv 
-	- make wjsgainers.csv 
+	- `make ygainers.csv` 
+	- `make wjsgainers.csv` 
 * The csv files (along with the html files) should appear within your list of files in your remote repository.
 * Lastly, run the following line to see the structure of your repository: `tree <path to your project repo> -I env`
 	- You should see a tree similar to this:
-	- `├── LICENSE
+	- ```bash
+	   ├── LICENSE
 	   ├── README.md
 	   ├── google-chrome-stable_current_amd64.deb
 	   ├── init.sh
@@ -60,8 +61,9 @@ After connecting to the VM, run the following within the command line to update 
 	   ├── requirements.txt
 	   ├── setup_git_global_creds.sh
 	   ├── wsjgainers.csv
-	   ├── wsjgainers.html`
-	  ├── ygainers.csv
-	  └── ygainers.html	
+	   ├── wsjgainers.html
+	   ├── ygainers.csv
+	   └── ygainers.html
+	  ```	
 
  
