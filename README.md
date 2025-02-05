@@ -36,3 +36,32 @@ After connecting to the VM, run the following within the command line to update 
 ### Run the init.sh script to finish setting up the VM:
 * ./init.sh
 
+### Add tools and functionality for pipeline:
+* Install Chrome headless browser within your VM using the code found within the install_chrome_headless.sh script. Check that it’s working correctly using example.com, using the script provided at the bottom of the shell file.
+* A makefile and requirement.txt file can be found within this repository. It will be used to set up automation.
+	- Enter “make” within the command line will give you an overview of the file
+	- Enter “make update” to update the dependencies using the requirement.txt file (only need pandas and lxml for now).
+
+### Testing Chrome headless browser:
+* Enter your environment by entering the following on the command line (there should be a space in between the period and the e):
+	- . env/bin/activate
+* To test the headless browser, run one (or both) of the following lines:
+	- make ygainers.csv 
+	- make wjsgainers.csv 
+* The csv files (along with the html files) should appear within your list of files in your remote repository.
+* Lastly, run the following line to see the structure of your repository:  tree <path to your project repo> -I env
+	- You should see a tree similar to this:
+	- ├── LICENSE
+	  ├── README.md
+	  ├── google-chrome-stable_current_amd64.deb
+	  ├── init.sh
+	  ├── install_chrome_headless.sh
+	  ├── makefile
+	  ├── requirements.txt
+	  ├── setup_git_global_creds.sh
+	  ├── wsjgainers.csv
+	  ├── wsjgainers.html
+	  ├── ygainers.csv
+	  └── ygainers.html	
+
+ 
