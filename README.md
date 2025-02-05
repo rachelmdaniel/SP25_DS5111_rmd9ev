@@ -59,7 +59,7 @@ After connecting to the VM, run the following within the command line to update 
 	- `. env/bin/activate`
 * To test the headless browser, run one (or both) of the following lines:
 	- `make ygainers.csv` 
-	- `make wjsgainers.csv` 
+	- `make wsjgainers.csv` 
 * The csv files (along with the html files) should appear within your list of files in your remote repository when you use the ls command.
 * Note: an example of the ygainers.csv file can be found within the sample_data directory 
 * Lastly, run the following line to see the structure of your repository: `tree <path to your project repo> -I env`
@@ -68,11 +68,14 @@ After connecting to the VM, run the following within the command line to update 
 	   ├── LICENSE
 	   ├── README.md
 	   ├── google-chrome-stable_current_amd64.deb
-	   ├── init.sh
-	   ├── install_chrome_headless.sh
-	   ├── makefile
-	   ├── requirements.txt
-	   ├── setup_git_global_creds.sh
+	   ├── sample_data
+	   │   └── ygainers.csv
+	   ├── scripts
+	   │   ├── init.sh
+	   │   ├── install_chrome_headless.sh
+	   │   ├── makefile
+	   │   ├── requirements.txt
+	   │   └── setup_git_global_creds.sh
 	   ├── wsjgainers.csv
 	   ├── wsjgainers.html
 	   ├── ygainers.csv
