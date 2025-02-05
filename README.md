@@ -33,7 +33,7 @@ After connecting to the VM, run the following within the command line to update 
     - use the ls command to make sure the repo was cloned
     - Run git config --global --list to make sure that your username and email are connected
 
-### Run the init.sh script to finish setting up the VM:
+### Execute the init.sh script to finish setting up the VM:
 * ./init.sh
 
 ### Add tools and functionality for pipeline:
@@ -44,23 +44,23 @@ After connecting to the VM, run the following within the command line to update 
 
 ### Testing Chrome headless browser:
 * Enter your environment by entering the following on the command line (there should be a space in between the period and the e):
-	- . env/bin/activate
+	- `. env/bin/activate`
 * To test the headless browser, run one (or both) of the following lines:
 	- make ygainers.csv 
 	- make wjsgainers.csv 
 * The csv files (along with the html files) should appear within your list of files in your remote repository.
-* Lastly, run the following line to see the structure of your repository:  tree <path to your project repo> -I env
+* Lastly, run the following line to see the structure of your repository: `tree <path to your project repo> -I env`
 	- You should see a tree similar to this:
-	- ├── LICENSE
-	  ├── README.md
-	  ├── google-chrome-stable_current_amd64.deb
-	  ├── init.sh
-	  ├── install_chrome_headless.sh
-	  ├── makefile
-	  ├── requirements.txt
-	  ├── setup_git_global_creds.sh
-	  ├── wsjgainers.csv
-	  ├── wsjgainers.html
+	- `├── LICENSE
+	   ├── README.md
+	   ├── google-chrome-stable_current_amd64.deb
+	   ├── init.sh
+	   ├── install_chrome_headless.sh
+	   ├── makefile
+	   ├── requirements.txt
+	   ├── setup_git_global_creds.sh
+	   ├── wsjgainers.csv
+	   ├── wsjgainers.html`
 	  ├── ygainers.csv
 	  └── ygainers.html	
 
