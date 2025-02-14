@@ -61,7 +61,7 @@ After connecting to the VM, run the following within the command line to update 
 	- `make ygainers.csv` 
 	- `make wsjgainers.csv` 
 * The csv files (along with the html files) should appear within your list of files in your remote repository when you use the ls command.
-* Note: an example of the ygainers.csv file can be found within the sample_data directory 
+* Note: Examples of the ygainers.csv and wsjgainers.csv files can be found within the sample_data directory 
 * Lastly, run the following line to see the structure of your repository: `tree <path to your project repo> -I env`
 	- You should see a tree similar to this:
 	- ```bash
