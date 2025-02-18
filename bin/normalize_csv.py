@@ -1,14 +1,32 @@
+"""
+This module cleans and normalizes raw yahoo and wsj csv files.
+"""
+
 import sys
 import re
 import os
 import pandas as pd
-assert len(sys.argv) == 2
+#assert len(sys.argv) == 2
+print(sys.argv)
 fname = sys.argv[1].strip()
 
 def csv_normalizer(csvfile):
-    assert os.path.splitext(csvfile)[1] == '.csv', (f"Not CSV file")
-    directory, filename = os.path.split(os.path.abspath(csvfile))
-    assert filename == "ygainers.csv" or filename == "wsjgainers.csv", (f"File cannot be used here. Check for typos and make sure it is called ygainers.csv or wsjgainers.csv")
+
+    """
+    Function that performs the normalization.
+    Arguments: ygainers.csv or wsjgainers.csv file
+    returns: normalized csv file titled ygainers_norm.csv or wsjgainers_norm.csv
+    """
+
+    print(f"CSVFile path: {csvfile}")
+    print(f"Extension: {os.path.splitext(csvfile)[1]}")
+    csvfile = csvfile.strip()
+
+#assert os.path.splitext(csvfile)[1].lower() == '.csv', f"Not CSV file"
+#directory, filename = os.path.split(os.path.abspath(csvfile))
+#assert filename == "ygainers.csv" or filename == "wsjgainers.csv",
+#f"File cannot be used here.
+#Check for typos and make sure it is called ygainers.csv or wsjgainers.csv"
 
     if "ygainers" in csvfile:
         def extract_first_number(text):
@@ -24,9 +42,10 @@ def csv_normalizer(csvfile):
         y_norm = y_raw[["Symbol","Price","Change","Change %"]]
         y_norm["Price"] = y_norm["Price"].apply(extract_first_number)
         y_norm["Change %"] = y_norm["Change %"].apply(extract_percentage)
-        y_norm = y_norm.rename(columns = {'Symbol':'symbol','Price':'price','Change':'price_change','Change %':'price_percent_change'})
+        y_norm = y_norm.rename(columns = {'Symbol':'symbol','Price':'price'})
+        y_norm = y_norm.rename(columns={'Change':'price_change','Change %':'price_percent_change'})
 
-        assert y_norm.shape[1] == 4, (f"Incorrect number of columns")
+        assert y_norm.shape[1] == 4, "Incorrect number of columns"
         y_norm.to_csv('ygainers_norm.csv', index = False)
 
     elif "wsjgainers" in csvfile:
@@ -37,11 +56,12 @@ def csv_normalizer(csvfile):
         wsj_raw = pd.read_csv("wsjgainers.csv")
 
         wsj_norm = wsj_raw[["Unnamed: 0","Last","Chg","% Chg"]]
-        wsj_norm = wsj_norm.rename(columns = {'Unnamed: 0':'symbol','Last':'price','Chg':'price_change','% Chg':'price_percent_change'})
+        wsj_norm = wsj_norm.rename(columns = {'Unnamed: 0':'symbol','Last':'price'})
+        wsj_norm = wsj_norm.rename(columns = {'Chg':'price_change','% Chg':'price_percent_change'})
         extracted_symbol = [extract_symbol(row) for row in wsj_norm["symbol"]]
         wsj_norm["symbol"] = extracted_symbol
 
-        assert wsj_norm.shape[1] == 4, (f"Incorrect number of columns")
+        assert wsj_norm.shape[1] == 4, "Incorrect number of columns"
         wsj_norm.to_csv('wsjgainers_norm.csv', index = False)
 
     else:
