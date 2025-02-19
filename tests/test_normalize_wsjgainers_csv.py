@@ -19,7 +19,7 @@ def test_normalize_wsjgainers_csv():
 
         csv_normalizer(sample_file)
 
-        assert os.path.exists(output_file), f"Normalized file not created"
+        assert os.path.exists(output_file), "Normalized file not created"
 
         wsjnorm = pd.read_csv(output_file)
         assert "symbol" in wsjnorm.columns and "price_change" in wsjnorm.columns, "Missing expected columns"
