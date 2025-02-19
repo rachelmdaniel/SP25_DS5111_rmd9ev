@@ -19,10 +19,10 @@ def csv_normalizer(csvfile):
     print(f"Inside csv_normalizer, received file path: '{csvfile}'")
 
     csvfile = csvfile.strip()
-    assert os.path.splitext(csvfile)[1].lower() == '.csv', f"Not CSV file"
+    assert os.path.splitext(csvfile)[1].lower() == '.csv', "Not CSV file"
 
-    directory, filename = os.path.split(os.path.abspath(csvfile))
-    assert filename == "ygainers.csv" or filename == "wsjgainers.csv", "Make sure file is called ygainers.csv or wsjgainers.csv"
+    filename = os.path.split(os.path.abspath(csvfile))[1]
+    assert filename in ("ygainers.csv","wsjgainers.csv"),"Check file name."
 
 
     if "ygainers" in csvfile:
