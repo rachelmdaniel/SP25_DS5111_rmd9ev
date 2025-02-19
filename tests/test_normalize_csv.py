@@ -3,15 +3,16 @@ sys.path.append('.')
 import os
 import re
 import pandas as pd
-from bin.normalize_csv import csv_normalizer
+from  bin.normalize_csv import csv_normalizer
 
 def test_normalize_csv(monkeypatch):
 	sample_file = os.path.join(os.path.dirname(__file__),"..", "sample_data","ygainers.csv")
 	sample_file = os.path.abspath(sample_file).strip()
 
-	monkeypatch.setattr(sys, 'argv', ['test_normalize_csv', sample_file])
+	#monkeypatch.setattr(sys, 'argv', ['test_normalize_csv.py', sample_file])
+	print(f"Test: sys.argv[1] is '{sys.argv[1]}'")
+	print(f"sys.argv in test: {sys.argv}")
 
-	print(f"file being passed in: {sys.argv[1].strip()}")
 	print(f"Sample file path: {sample_file}")
 	print(f"Extracted extension: {os.path.splitext(sample_file)[1]}")
 
