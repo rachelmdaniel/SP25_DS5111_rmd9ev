@@ -6,9 +6,6 @@ import sys
 import re
 import os
 import pandas as pd
-#assert len(sys.argv) == 2
-print(sys.argv)
-fname = sys.argv[1].strip()
 
 def csv_normalizer(csvfile):
 
@@ -17,16 +14,16 @@ def csv_normalizer(csvfile):
     Arguments: ygainers.csv or wsjgainers.csv file
     returns: normalized csv file titled ygainers_norm.csv or wsjgainers_norm.csv
     """
+    print(f"Checking extension for:'{csvfile}'")
+    print(f"Extracted Extension: {os.path.splitext(csvfile)[1]}")
+    print(f"Inside csv_normalizer, received file path: '{csvfile}'")
 
-    print(f"CSVFile path: {csvfile}")
-    print(f"Extension: {os.path.splitext(csvfile)[1]}")
     csvfile = csvfile.strip()
+    assert os.path.splitext(csvfile)[1].lower() == '.csv', f"Not CSV file"
 
-#assert os.path.splitext(csvfile)[1].lower() == '.csv', f"Not CSV file"
-#directory, filename = os.path.split(os.path.abspath(csvfile))
-#assert filename == "ygainers.csv" or filename == "wsjgainers.csv",
-#f"File cannot be used here.
-#Check for typos and make sure it is called ygainers.csv or wsjgainers.csv"
+    directory, filename = os.path.split(os.path.abspath(csvfile))
+    assert filename == "ygainers.csv" or filename == "wsjgainers.csv", "Make sure file is called ygainers.csv or wsjgainers.csv"
+
 
     if "ygainers" in csvfile:
         def extract_first_number(text):
@@ -67,4 +64,10 @@ def csv_normalizer(csvfile):
     else:
         print("There was no Yahoo gainers file or WSJ gainers file passed")
 
-csv_normalizer(fname)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python bin/normalize_csv.py <path_to_csv>")
+        sys.exit(1)
+
+    fname = sys.argv[1].strip()
+    csv_normalizer(fname)
