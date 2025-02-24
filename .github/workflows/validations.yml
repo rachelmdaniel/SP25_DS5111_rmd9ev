@@ -2,8 +2,6 @@ name: Feature Validation
 
 on:
   push:
-    branches:
-      - LAB-03_csv_normalizer
   workflow_dispatch:
 
 jobs:
