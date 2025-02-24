@@ -22,6 +22,6 @@ wsjgainers.csv: wsjgainers.html
 clean:
 	rm -f ygainers.html ygainers.csv wsjgainers.html wsjgainers.csv
 lint:
-	pylint bin/normalize_csv.py
+	env/bin/python -m pylint bin/normalize_csv.py
 test: lint
-	pytest -vv tests
+	env/bin/python -m pytest -vv tests
