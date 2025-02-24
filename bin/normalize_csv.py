@@ -34,7 +34,7 @@ def csv_normalizer(csvfile):
             match = re.search(r'\d+\.?\d*', text)
             return match.group(0) if match else None
 
-        y_raw = pd.read_csv("ygainers.csv")
+        y_raw = pd.read_csv(csvfile)
 
         y_norm = y_raw[["Symbol","Price","Change","Change %"]]
         y_norm["Price"] = y_norm["Price"].apply(extract_first_number)
@@ -50,7 +50,7 @@ def csv_normalizer(csvfile):
             match = re.search(r'\((.*?)\)', text)
             return match.group(1) if match else None
 
-        wsj_raw = pd.read_csv("wsjgainers.csv")
+        wsj_raw = pd.read_csv(csvfile)
 
         wsj_norm = wsj_raw[["Unnamed: 0","Last","Chg","% Chg"]]
         wsj_norm = wsj_norm.rename(columns = {'Unnamed: 0':'symbol','Last':'price'})
