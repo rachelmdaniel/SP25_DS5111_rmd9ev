@@ -21,7 +21,7 @@ class GainerProcessWSJ(GainerProcess):
 
     def normalize(self):
         print("Normalizing WSJ gainers")
-        csvfile = "wsjgainer.csv"
+        csvfile = "wsjgainers.csv"
 
         def extract_symbol(text):
             match = re.search(r'\((.*?)\)', text)
