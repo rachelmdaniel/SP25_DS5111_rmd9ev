@@ -34,6 +34,7 @@ class GainerProcessWSJ(GainerProcess):
         wsj_norm = wsj_norm.rename(columns = {'Chg':'price_change','% Chg':'price_percent_change'})
         extracted_symbol = [extract_symbol(row) for row in wsj_norm["symbol"]]
         wsj_norm["symbol"] = extracted_symbol
+        self.wsj_norm = wsj_norm
 
         assert wsj_norm.shape[1] == 4, "Incorrect number of columns"
 
@@ -41,4 +42,4 @@ class GainerProcessWSJ(GainerProcess):
         print("Saving WSJ gainers")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f'wsjgainers_norm_{timestamp}.csv'
-        wsj_norm.to_csv(filename, index=False)
+        self.wsj_norm.to_csv(filename, index=False)
