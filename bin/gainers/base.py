@@ -17,7 +17,7 @@ class GainerProcess(ABC):
     """ Abstract base class for processing gainer data. """
 
     def __init__(self):
-        raise NotImplementedError("Subclasses must implement init method.")
+        pass
 
     @abstractmethod
     def normalize(self):
