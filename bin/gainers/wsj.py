@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import os
+from datetime import datetime
 from .base import GainerDownload, GainerProcess
 
 class GainerDownloadWSJ(GainerDownload):
