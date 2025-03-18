@@ -41,7 +41,6 @@ class GainerProcessYahoo(GainerProcess):
 
         assert y_norm.shape[1] == 4, "Incorrect number of columns"
 
-
     def save_with_timestamp(self):
         print("Saving Yahoo gainers")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
