@@ -18,12 +18,11 @@ class ProcessGainer:
         self._save_to_file()
 
 if __name__=="__main__":
-    # Our sample main file would look like this
     import sys
     from bin.gainers.factory import GainerFactory
 
     # Make our selection, 'one' choice
-    choice = sys.argv[1]
+    choice = sys.argv[1].lower()
 
     # let our factory get select the family of objects for processing
     factory = GainerFactory(choice)
