@@ -38,6 +38,7 @@ class GainerProcessYahoo(GainerProcess):
         y_norm["Change %"] = y_norm["Change %"].apply(extract_percentage)
         y_norm = y_norm.rename(columns={'Symbol': 'symbol', 'Price': 'price'})
         y_norm = y_norm.rename(columns={'Change': 'price_change', 'Change %': 'price_percent_change'})
+        self.y_norm = y_norm
 
         assert y_norm.shape[1] == 4, "Incorrect number of columns"
 
@@ -45,4 +46,4 @@ class GainerProcessYahoo(GainerProcess):
         print("Saving Yahoo gainers")
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f'ygainers_norm_{timestamp}.csv'
-        y_norm.to_csv(filename, index=False)
+        self.y_norm.to_csv(filename, index=False)
