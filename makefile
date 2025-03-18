@@ -19,9 +19,28 @@ wsjgainers.html:
 wsjgainers.csv: wsjgainers.html
 	python -c "import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')"
 
+normalize:
+	python get_gainer.py $(SRC)
+
+gainers:
+	@echo "Processing gainers for source: $(SRC)"
+	@if [ "$(SRC)" = "yahoo" ]; then \
+		make ygainers.csv; \
+		make normalize SRC=yahoo; \
+	elif [ "$(SRC)" = "wsj" ]; then \
+		make wsjgainers.csv; \
+		make normalize SRC=wsj; \
+	else \
+		echo "Invalid SRC value. Use 'yahoo' or 'wsj'."; \
+		exit 1; \
+	fi
+
 clean:
 	rm -f ygainers.html ygainers.csv wsjgainers.html wsjgainers.csv
+
 lint:
 	pylint bin/normalize_csv.py
+
 test: lint
 	pytest -vv tests
+
