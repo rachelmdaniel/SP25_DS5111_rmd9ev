@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 class GainerDownload(ABC):
     """ Abstract base class used to download gainer data. """
 
-    def __init__(self):
+    def __init__(self,url):
         self.url = url
 
     @abstractmethod
