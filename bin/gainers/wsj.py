@@ -1,10 +1,20 @@
-import pandas as pd
+
+"""
+Contains the WSJ downloader and processing classes.
+
+"""
+
 import re
 import os
 from datetime import datetime
+import pandas as pd
 from .base import GainerDownload, GainerProcess
 
 class GainerDownloadWSJ(GainerDownload):
+    """
+    Contains functions for downloading WSJ gainers data.
+    """
+
     def __init__(self):
         super().__init__("https://www.wsj.com/market-data/stocks/us/movers")
 
@@ -16,9 +26,13 @@ class GainerDownloadWSJ(GainerDownload):
         print("WSJ gainers saved into CSV")
 
 class GainerProcessWSJ(GainerProcess):
+    """
+    Contains functions for processing WSJ gainers data.
+    """
+
     def __init__(self):
         super().__init__()
-
+        self.wsj_norm = None
     def normalize(self):
         print("Normalizing WSJ gainers")
         csvfile = "wsjgainers.csv"
