@@ -1,3 +1,8 @@
+"""
+Module that contains abstract base classes for downloading and processing source data.
+
+"""
+
 from abc import ABC, abstractmethod
 
 # DOWNLOADER
@@ -28,4 +33,3 @@ class GainerProcess(ABC):
     def save_with_timestamp(self):
         """ Abstract method to ensure gainer data is downloaded from source. """
         raise NotImplementedError("Subclasses must implement save with timestamp  method.")
-
