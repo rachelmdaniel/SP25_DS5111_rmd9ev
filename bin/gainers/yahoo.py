@@ -1,11 +1,19 @@
-import pandas as pd
+"""
+Module for Downloading and Processing yahoo data.
+"""
+
 import re
 import os
 from datetime import datetime
+import pandas as pd
 from .base import GainerDownload, GainerProcess
 
 
 class GainerDownloadYahoo(GainerDownload):
+    """
+    Contains functions for downloading Yahoo gainers data.
+    """
+
     def __init__(self):
         super().__init__("https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200")
 
@@ -16,8 +24,13 @@ class GainerDownloadYahoo(GainerDownload):
         os.system("python -c \"import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')\"")
 
 class GainerProcessYahoo(GainerProcess):
+    """
+    Contains functions for processing WSJ gainers data.
+    """
+
     def __init__(self):
         super().__init__()
+        self.y_norm = None
 
     def normalize(self):
         print("Normalizing yahoo gainers")
