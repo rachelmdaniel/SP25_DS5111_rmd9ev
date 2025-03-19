@@ -25,7 +25,7 @@ class GainerDownloadYahoo(GainerDownload):
 
 class GainerProcessYahoo(GainerProcess):
     """
-    Contains functions for processing WSJ gainers data.
+    Contains functions for processing Yahoo gainers data.
     """
 
     def __init__(self):
