@@ -12,7 +12,7 @@ from .base import GainerDownload, GainerProcess
 
 class GainerDownloadWSJ(GainerDownload):
     """
-    Contains functions for downloading WSJ gainers data.
+    Contains functions for downloading WSJ gainers data. Retries the download if failure.
     """
 
     def __init__(self):
@@ -20,10 +20,17 @@ class GainerDownloadWSJ(GainerDownload):
 
     def download(self):
         print("Downloading WSJ gainers")
-        os.system("sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 "
-                  "'https://www.wsj.com/market-data/stocks/us/movers' > wsjgainers.html")
-        os.system("python -c \"import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')\"")
-        print("WSJ gainers saved into CSV")
+        success = False
+
+        while not success:
+            os.system("sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 "
+                      "'https://www.wsj.com/market-data/stocks/us/movers' > wsjgainers.html")
+            if os.path.exists("wsjgainers.html") and os.path.getsize("wsjgainers.html") != 0:
+                os.system("python -c \"import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')\"")
+                print("WSJ gainers saved into CSV")
+                success = True
+            else:
+                success = False
 
 class GainerProcessWSJ(GainerProcess):
     """
