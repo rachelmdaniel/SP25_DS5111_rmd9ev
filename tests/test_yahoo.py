@@ -18,10 +18,10 @@ def test_yahoo_init():
 
 @patch("bin.gainers.yahoo.os.system")
 @patch("bin.gainers.yahoo.os.path.exists", return_value=True)
-@patch("bin.gainers.yahoo.os.path.getsize", return_value=100) 
-@patch("builtins.open", new_callable=mock_open) 
+@patch("bin.gainers.yahoo.os.path.getsize", return_value=100)
+@patch("builtins.open", new_callable=mock_open)
 
-def test_yahoo_download(mock_exists, mock_getsize, mock_system):
+def test_yahoo_download(mock_open_file,mock_exists, mock_getsize, mock_system):
     """Test Yahoo download function without downloading."""
     downloader = GainerDownloadYahoo()
     downloader.download()
