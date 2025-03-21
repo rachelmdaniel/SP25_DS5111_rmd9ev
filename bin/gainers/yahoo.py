@@ -37,6 +37,7 @@ class GainerProcessYahoo(GainerProcess):
         csvfile = "ygainers.csv"
 
         def extract_first_number(text):
+            text = str(text)
             match = re.match(r'^[\d.]+', text)
             return match.group(0) if match else None
 
