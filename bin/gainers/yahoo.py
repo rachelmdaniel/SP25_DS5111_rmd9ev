@@ -19,9 +19,17 @@ class GainerDownloadYahoo(GainerDownload):
 
     def download(self):
         print("Downloading yahoo gainers")
-        os.system("google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 "
-                  "'https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200' > ygainers.html")
-        os.system("python -c \"import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')\"")
+        success = False
+
+        while not success:
+            os.system("google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=5000 "
+                      "'https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200' > ygainers.html")
+            if os.path.exists("ygainers.html") and os.path.getsize("ygainers.html") != 0:
+                os.system("python -c \"import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')\"")
+                print("Yahoo gainers saved into CSV")
+                success = True
+            else:
+                success = False
 
 class GainerProcessYahoo(GainerProcess):
     """
