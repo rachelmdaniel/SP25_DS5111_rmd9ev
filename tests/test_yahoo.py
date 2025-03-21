@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 import sys
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock, mock_open
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 from bin.gainers.yahoo import GainerDownloadYahoo, GainerProcessYahoo
@@ -19,11 +19,15 @@ def test_yahoo_init():
 @patch("bin.gainers.yahoo.os.system")
 @patch("bin.gainers.yahoo.os.path.exists", return_value=True)
 @patch("bin.gainers.yahoo.os.path.getsize", return_value=100) 
+@patch("builtins.open", new_callable=mock_open) 
 
 def test_yahoo_download(mock_exists, mock_getsize, mock_system):
     """Test Yahoo download function without downloading."""
     downloader = GainerDownloadYahoo()
     downloader.download()
+
+    with open("ygainers.csv", "w") as f:
+        f.write("Mock Data")
 
     assert os.path.exists("ygainers.csv"), "Mock download of file"
 
@@ -48,6 +52,7 @@ def test_yahoo_processor_normalize():
 
     processor = GainerProcessYahoo()
     processor.normalize()
+
 
     assert processor.y_norm is not None
     assert processor.y_norm.shape[1] == 4
