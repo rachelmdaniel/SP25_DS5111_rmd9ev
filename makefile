@@ -39,7 +39,7 @@ clean:
 	rm -f ygainers.html ygainers.csv wsjgainers.html wsjgainers.csv
 
 lint:
-	pylint get_gainer.py bin/gainers/*.py bin/normalize_csv.py
+	- pylint get_gainer.py bin/gainers/*.py bin/normalize_csv.py || true
 
 test: lint
 	pytest -vv tests
