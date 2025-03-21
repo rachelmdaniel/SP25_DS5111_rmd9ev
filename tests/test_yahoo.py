@@ -1,0 +1,75 @@
+import pandas as pd
+import os
+import sys
+sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
+from bin.gainers.yahoo import GainerDownloadYahoo, GainerProcessYahoo
+
+
+
+# Test GainerDownloadYahoo
+
+def test_yahoo_init():
+    """Test Yahoo downloader initialization."""
+    downloader = GainerDownloadYahoo()
+    assert downloader.url == "https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200"
+
+def test_yahoo_download():
+    """Test Yahoo download function."""
+    downloader = GainerDownloadYahoo()
+    downloader.download()
+
+    assert os.path.exists("ygainers.html")
+    assert os.path.exists("ygainers.csv")
+
+    os.remove("ygainers.html")
+    os.remove("ygainers.csv")
+
+# Test GainerProcessYahoo
+
+def test_yahoo_processor_normalize():
+    """Test Yahoo normalize function processes data correctly."""
+
+    # Test CSV file
+    csv_filename = "ygainers.csv"
+    data = {
+        "Symbol": ["AAPL", "MSFT"],
+        "Price": ["150.50", "300.75"],
+        "Change": ["+2.50", "+5.00"],
+        "Change %": ["+1.67%", "+2.34%"]
+    }
+    df = pd.DataFrame(data)
+    df.to_csv(csv_filename, index=False)
+
+    processor = GainerProcessYahoo()
+    processor.normalize()
+
+    assert processor.y_norm is not None
+    assert processor.y_norm.shape[1] == 4
+    assert list(processor.y_norm.columns) == ["symbol", "price", "price_change", "price_percent_change"]
+    assert processor.y_norm["symbol"].tolist() == ["AAPL", "MSFT"]
+
+    os.remove(csv_filename)
+
+def test_yahoo_processor_save():
+    """Test yahoo save_with_timestamp function creates a file."""
+    # Test CSV file
+    csv_filename = "ygainers.csv"
+    data = {
+        "Symbol": ["AAPL", "MSFT"],
+        "Price": ["150.50", "300.75"],
+        "Change": ["+2.50", "+5.00"],
+        "Change %": ["+1.67%", "+2.34%"]
+    }
+    df = pd.DataFrame(data)
+    df.to_csv(csv_filename, index=False)
+
+    processor = GainerProcessYahoo()
+    processor.normalize()
+    processor.save_with_timestamp()
+
+    files = [f for f in os.listdir() if f.startswith("ygainers_norm_") and f.endswith(".csv")]
+    assert len(files) > 0, "No output file was created."
+
+    os.remove(csv_filename)
+    for i in files:
+        os.remove(i)
