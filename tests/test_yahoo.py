@@ -31,9 +31,6 @@ def test_yahoo_download(mock_open_file,mock_exists, mock_getsize, mock_system):
 
     assert os.path.exists("ygainers.csv"), "Mock download of file"
 
-    if os.path.exists("ygainers.csv"):
-        os.remove("ygainers.csv")
-
 # Test GainerProcessYahoo
 
 def test_yahoo_processor_normalize():
