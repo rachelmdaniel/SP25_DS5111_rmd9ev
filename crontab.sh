@@ -24,11 +24,10 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h  dom mon dow   command
-31 13 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && TIMESTAMP=$(date +"\%Y\%m\%d_\%H\%M") && make wsjgainers.csv && mv wsjgainers.csv wsjgainers_$TIMESTAMP.csv && rm -f wsjgainers.csv wsjgainers.html
-31 13 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && TIMESTAMP=$(date +"\%Y\%m\%d_\%H\%M") && make ygainers.csv && mv ygainers.csv ygainers_$TIMESTAMP.csv && rm -f ygainers.csv ygainers.html
-30 16 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && TIMESTAMP=$(date +"\%Y\%m\%d_\%H\%M") && make wsjgainers.csv && mv wsjgainers.csv wsjgainers_$TIMESTAMP.csv && rm -f wsjgainers.csv wsjgainers.html
-30 16 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && TIMESTAMP=$(date +"\%Y\%m\%d_\%H\%M") && make ygainers.csv && mv ygainers.csv ygainers_$TIMESTAMP.csv && rm -f ygainers.csv ygainers.html
-01 20 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && TIMESTAMP=$(date +"\%Y\%m\%d_\%H\%M") && make wsjgainers.csv && mv wsjgainers.csv wsjgainers_$TIMESTAMP.csv && rm -f wsjgainers.csv wsjgainers.html
-01 20 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && TIMESTAMP=$(date +"\%Y\%m\%d_\%H\%M") && make ygainers.csv && mv ygainers.csv ygainers_$TIMESTAMP.csv && rm -f ygainers.csv ygainers.html
-
+31 13 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=yahoo >> cron_log.txt 2>&1 &&  rm -f ygainers.csv ygainers.html
+31 13 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
+30 16 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=yahoo >> cron_log.txt 2>&1 &&  rm -f ygainers.csv ygainers.html
+30 16 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
+01 20 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=yahoo >> cron_log.txt 2>&1 &&  rm -f ygainers.csv ygainers.html
+01 20 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
 
