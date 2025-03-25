@@ -20,7 +20,7 @@ wsjgainers.csv: wsjgainers.html
 	/home/ubuntu/SP25_DS5111_rmd9ev/env/bin/python3 -c "import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')"
 
 normalize:
-	python get_gainer.py $(SRC)
+	/home/ubuntu/SP25_DS5111_rmd9ev/env/bin/python3 get_gainer.py $(SRC)
 
 gainers:
 	@echo "Processing gainers for source: $(SRC)"
