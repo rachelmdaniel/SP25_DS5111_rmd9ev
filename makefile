@@ -14,7 +14,7 @@ ygainers.csv: ygainers.html
 	/home/ubuntu/SP25_DS5111_rmd9ev/env/bin/python3 -c "import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')"
 
 wsjgainers.html:
-	sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=10000 'https://www.wsj.com/market-data/stocks/us/movers' > wsjgainers.html
+	sudo google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=60000 'https://www.wsj.com/market-data/stocks/us/movers' > wsjgainers.html
 
 wsjgainers.csv: wsjgainers.html
 	/home/ubuntu/SP25_DS5111_rmd9ev/env/bin/python3 -c "import pandas as pd; raw = pd.read_html('wsjgainers.html'); raw[0].to_csv('wsjgainers.csv')"
