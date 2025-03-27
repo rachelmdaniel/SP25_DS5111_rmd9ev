@@ -25,9 +25,8 @@
 #
 # m h  dom mon dow   command
 31 13 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=yahoo >> cron_log.txt 2>&1 &&  rm -f ygainers.csv ygainers.html
-31 13 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
+31 13 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && DISPLAY=:0 nohup make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
 30 16 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=yahoo >> cron_log.txt 2>&1 &&  rm -f ygainers.csv ygainers.html
-30 16 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
+30 16 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && DISPLAY=:0 nohup make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
 01 20 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=yahoo >> cron_log.txt 2>&1 &&  rm -f ygainers.csv ygainers.html
-01 20 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
-
+01 20 * * 1-5 cd /home/ubuntu/SP25_DS5111_rmd9ev && DISPLAY=:0 nohup make gainers SRC=wsj >> cron_log.txt 2>&1 &&  rm -f wsjgainers.csv wsjgainers.html
