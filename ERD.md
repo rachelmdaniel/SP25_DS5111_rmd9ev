@@ -1,4 +1,4 @@
-erDiagram
+```mermaid
 
     STOCK ||--o{ AVERAGE-GAIN : "has"
     STOCK ||--o{ TOTAL-GAIN : "has"
@@ -49,6 +49,7 @@ erDiagram
         float low_price
         float volume
     }
+```
 
 * Description of design:
     - I designed my ER diagram this way because I am looking for the best performing, yet stable stocks. I would like to see how much the stocks increase on average and 
