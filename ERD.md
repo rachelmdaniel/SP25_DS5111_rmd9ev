@@ -1,4 +1,5 @@
 ```mermaid
+erDiagram
 
     STOCK ||--o{ AVERAGE-GAIN : "has"
     STOCK ||--o{ TOTAL-GAIN : "has"
