@@ -4,7 +4,7 @@ erDiagram
     STOCK ||--o{ AVERAGE-GAIN : "has"
     STOCK ||--o{ TOTAL-GAIN : "has"
     STOCK ||--o{ BIGGEST-GAINER-PER-DAY : "recorded as"
-    STOCK ||--o{ SMALLEST-GAINER-PER-DAY : "experiences"
+    STOCK ||--o{ SMALLEST-GAINER-PER-DAY : "recorded as"
     STOCK ||--o{ MARKET-CORRELATION : "correlates with"
      STOCK ||--o{ PRICE-DISTRIBUTION : "follows"
 
@@ -62,6 +62,6 @@ erDiagram
 
 * Use Cases:
     - Picking stocks that gain the most on average or have the largest total gain.
-    - Picking stocks that constantly gain the most or experience the smallest increases, but appear often so they might be the most stable
-    - Percent of stocks that are correlated with overall market to understand if it is helpful to choose stocks that are correlated with it
+    - Picking stocks that constantly gain the most or experience the smallest increases, but appear often so they might be the most stable.
+    - Percent of stocks that are correlated with overall market to understand if it is helpful to choose stocks that are correlated with it.
     - Look at the distribution of prices to identify stocks that commonly perform well.
