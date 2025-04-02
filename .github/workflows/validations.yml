@@ -18,6 +18,11 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install Google Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+          google-chrome --version
       - name: Install dependencies
         run: |
           make update
