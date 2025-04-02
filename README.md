@@ -1,6 +1,8 @@
 # SP25_DS5111_rmd9ev
 Repository for Software and Automation Skills Class Spring 2025 - UVA MSDS
 
+[![Feature Validation](https://github.com/rachelmdaniel/SP25_DS5111_rmd9ev/actions/workflows/validations.yml/badge.svg?branch=LAB-03_csv_normalizer)](https://github.com/rachelmdaniel/SP25_DS5111_rmd9ev/actions/workflows/validations.yml)
+
 ## Setting Up the VM
 
 After connecting to the VM, run the following within the command line to update package information:
