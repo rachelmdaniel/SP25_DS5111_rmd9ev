@@ -4,11 +4,12 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.dirname(os.path.dirname(__file__))))
 from bin.gainers.wsj import GainerDownloadWSJ, GainerProcessWSJ
 
+# great!  I like the balance in the amount of testing.  Not too much, but enough to give you confidence.
 
 # Test GainerDownloadWSJ
 
 def test_wsj_init():
-    """Test WSJ downloader initialization."""
+    """Test WSJ downloader initialization."""  # the comments could add a little more info, maybe we can try the Given/When/Then structure to practice the comment setup?
     downloader = GainerDownloadWSJ()
     assert downloader.url == "https://www.wsj.com/market-data/stocks/us/movers"
 
