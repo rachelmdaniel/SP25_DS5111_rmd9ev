@@ -26,3 +26,4 @@ tomlkit==0.13.2
 typing_extensions==4.12.2
 tzdata==2025.1
 webencodings==0.5.1
+# good balance of versioning here.   Although we need to version top packages... oh wait, I think you have duplicates?  I see pandas, but also pandas==2.2.3...
