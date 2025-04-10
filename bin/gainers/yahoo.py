@@ -26,14 +26,14 @@ class GainerDownloadYahoo(GainerDownload):
         while not success and retries < max_retries:
             os.system("google-chrome-stable --headless --disable-gpu --dump-dom  --no-sandbox --timeout=5000 "
                       "'https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200' > ygainers.html")
-            if os.path.exists("ygainers.html") and os.path.getsize("ygainers.html") != 0:
+            if os.path.exists("ygainers.html") and os.path.getsize("ygainers.html") != 0:   # plus 1 for the error checking here nice
                 os.system("python -c \"import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')\"")
                 print("Yahoo gainers saved into CSV")
                 success = True
             else:
                 retries += 1
         if not success:
-            raise RuntimeError("Failed to download yahoo gainers in 5 attempts.")
+            raise RuntimeError("Failed to download yahoo gainers in 5 attempts.")   # I like the retry idea!  nice
 
 class GainerProcessYahoo(GainerProcess):
     """

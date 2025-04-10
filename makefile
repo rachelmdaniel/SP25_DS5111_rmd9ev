@@ -10,7 +10,8 @@ update: env
 ygainers.html:
 	google-chrome-stable --headless --disable-gpu --dump-dom --no-sandbox --timeout=10000 'https://finance.yahoo.com/markets/stocks/gainers/?start=0&count=200' > ygainers.html
 
-ygainers.csv: ygainers.html
+ygainers.csv: ygainers.html  # hard coded paths are to be avoided.  It is very possible, in fact expected, that at some point, (production for example)
+                             # the user path may not be `/home/ubuntu/` and then this code would break.  So go for the relative path instead
 	/home/ubuntu/SP25_DS5111_rmd9ev/env/bin/python3 -c "import pandas as pd; raw = pd.read_html('ygainers.html'); raw[0].to_csv('ygainers.csv')"
 
 wsjgainers.html:
