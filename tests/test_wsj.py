@@ -12,6 +12,7 @@ def test_wsj_init():
     downloader = GainerDownloadWSJ()
     assert downloader.url == "https://www.wsj.com/market-data/stocks/us/movers"
 
+@pytest.mark.flaky(reruns=3)
 def test_wsj_download():
     """Test WSJ download function."""
     downloader = GainerDownloadWSJ()
