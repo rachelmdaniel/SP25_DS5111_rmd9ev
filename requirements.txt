@@ -24,3 +24,5 @@ tzdata==2025.1
 webencodings==0.5.1
 dbt-core==1.9.3
 dbt-snowflake==1.9.2
+pytest-rerunfailures==15.0
+
